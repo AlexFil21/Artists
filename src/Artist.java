@@ -1,14 +1,6 @@
-public class Artist {
-    String psevdoName;
+public abstract class Artist  {
+     public String psevdoName;
 
-    Artist(String psevdoName) {
-        this.psevdoName = psevdoName;
-    }
-
-    Artist() {
-
-    }
-    public String getPsevdoName() {
-        return psevdoName;
-    }
+     abstract public void setPsevdo (String psevdoN);
+     abstract public String getPsevdoName();
 }

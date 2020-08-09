@@ -1,6 +1,10 @@
+import interfaces.Dance;
+import interfaces.Musician;
+import interfaces.Singer;
+
 import java.util.*;
 
-public class ArtAcademy {
+public class ArtAcademy implements Dance, Musician, Singer {
     String[][] skills = {{"hip-hop", "disco"}, {"opera singer","rock singer"}, {"piano","guitar"}};
     String[] randomSkills = {"dancer", "singer", "musician"};
 
@@ -19,23 +23,36 @@ public class ArtAcademy {
 
         switch (elem) {
             case "dancer":
-                return skills[0][r.nextInt(skills[0].length)];
+               return dance(r);
             case "singer":
-                return skills[1][r.nextInt(skills[1].length)];
-
+                return singer(r);
             case "musician":
-                return skills[2][r.nextInt(skills[2].length)];
+                return musician(r);
         }
 
         return  "";
     }
 
 
-    public Artist Teach (People people) {
+    public ConcretArtist Teach (People people) {
         String psevdo = setPsevdonim();
-        Artist artist = new Artist(psevdo);
-        artist.psevdoName = psevdo;
-        return artist;
+        ConcretArtist artist = new ConcretArtist();
+        artist.setPsevdo(psevdo);
+        return  artist;
     }
 
+    @Override
+    public String dance(Random elem) {
+        return skills[0][elem.nextInt(skills[0].length)];
+    }
+
+    @Override
+    public String musician(Random elem) {
+        return skills[2][elem.nextInt(skills[2].length)];
+    }
+
+    @Override
+    public String singer(Random elem) {
+        return skills[1][elem.nextInt(skills[1].length)];
+    }
 }
