@@ -1,12 +1,17 @@
-import interfaces.Dance;
-import interfaces.Musician;
-import interfaces.Singer;
+import abstractClass.Artist;
+import skills.*;
 
 import java.util.*;
 
-public class ArtAcademy implements Dance, Musician, Singer {
-    String[][] skills = {{"hip-hop", "disco"}, {"opera singer","rock singer"}, {"piano","guitar"}};
-    String[] randomSkills = {"dancer", "singer", "musician"};
+public class ArtAcademy {
+    Disco d = new Disco();
+    Guitar g = new Guitar();
+    HipHop h = new HipHop();
+    OperaSinger o = new OperaSinger();
+    Piano p = new Piano();
+    RockSinger r = new RockSinger();
+    String[] arr = {d.getTalent(), g.getTalent(), h.getTalent(), o.getTalent(), p.getTalent(), r.getTalent()};
+
 
 
     public String setPsevdonim() {
@@ -18,41 +23,58 @@ public class ArtAcademy implements Dance, Musician, Singer {
 
     public  String setRandomSkills() {
         Random r = new Random();
-        int randomNumber=r.nextInt(randomSkills.length);
-        String elem = randomSkills[randomNumber];
+        int randomNumber=r.nextInt(arr.length);
+        String elem = arr[randomNumber];
 
         switch (elem) {
-            case "dancer":
-               return dance(r);
-            case "singer":
-                return singer(r);
-            case "musician":
-                return musician(r);
+            case "disco":
+               return elem;
+            case "guitar":
+                return elem;
+            case "hip-hop":
+                return elem;
+            case "opera singer":
+                return elem;
+            case "piano":
+                return elem;
+            case "rock singer":
+                return elem;
         }
 
         return  "";
     }
 
 
-    public ConcretArtist Teach (People people) {
+    public Artist teach (People people) {
         String psevdo = setPsevdonim();
-        ConcretArtist artist = new ConcretArtist();
-        artist.setPsevdo(psevdo);
-        return  artist;
+        String skill = setRandomSkills();
+        switch (skill){
+            case "disco":
+                d.setPsevdo(psevdo);
+                d.setTalent("disco");
+                return d;
+            case "guitar":
+                g.setTalent("guitar");
+                g.setPsevdo(psevdo);
+                return g;
+            case "hip-hop":
+                h.setTalent("hip-hop");
+                h.setPsevdo(psevdo);
+                return h;
+            case "opera singer":
+                o.setTalent("opera singer");
+                o.setPsevdo(psevdo);
+                return o;
+            case "piano":
+                p.setTalent("piano");
+                p.setPsevdo(psevdo);
+                return p;
+            case "rock singer":
+                r.setTalent("rock singer");
+                r.setPsevdo(psevdo);
+                return r;
+        }
+        return  null;
     }
 
-    @Override
-    public String dance(Random elem) {
-        return skills[0][elem.nextInt(skills[0].length)];
-    }
-
-    @Override
-    public String musician(Random elem) {
-        return skills[2][elem.nextInt(skills[2].length)];
-    }
-
-    @Override
-    public String singer(Random elem) {
-        return skills[1][elem.nextInt(skills[1].length)];
-    }
 }

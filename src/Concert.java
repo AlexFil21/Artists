@@ -1,3 +1,8 @@
+import interfaces.Dance;
+import interfaces.Musician;
+import interfaces.Singer;
+import skills.*;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -19,35 +24,28 @@ public class Concert {
                 System.out.println("Name: " + elem.get(0) + "\nAge: " + elem.get(1) + " year old\nPsevdoName: " + elem.get(2));
             }
         }
-
-
     }
 
    public static void Show (ArrayList concSkill) {
-        String[][] skills = {{"hip-hop", "disco"}, {"opera singer","rock singer"}, {"piano","guitar"}};
-        String[] arr = {"dancer", "singer", "musician"};
-        String talent = "";
+       Disco d = new Disco();
+       Guitar g = new Guitar();
+       HipHop h = new HipHop();
+       OperaSinger o = new OperaSinger();
+       Piano p = new Piano();
+       RockSinger r = new RockSinger();
 
-        for (int i = 0; i < skills.length ; i++) {
-            for (int j = 0; j <skills[i].length ; j++) {
-                if (skills[i][j] == concSkill.get(0)) {
-                    talent = arr[i];
-                }
-            }
-        }
-       System.out.println();
-
-        switch (talent) {
-            case "dancer":
-                System.out.println(concSkill.get(1) + " skill is " + concSkill.get(0) + ". Please dance");
-                break;
-            case "singer":
-                System.out.println(concSkill.get(1) + " skill is " + concSkill.get(0) + ". Please sing smth");
-                break;
-            case "musician":
-                System.out.println(concSkill.get(1) + " skill is " + concSkill.get(0) + ". Please play smth");
-                break;
-        }
+       if (d instanceof Dance && d.getTalent() == concSkill.get(0)) {
+           System.out.println(concSkill.get(1) + " skill is " + concSkill.get(0) + ". Please dance");
+       } else if (h instanceof Dance && h.getTalent() == concSkill.get(0)) {
+           System.out.println(concSkill.get(1) + " skill is " + concSkill.get(0) + ". Please dance");
+       } else if (g instanceof Musician && g.getTalent() == concSkill.get(0)) {
+           System.out.println(concSkill.get(1) + " skill is " + concSkill.get(0) + ". Please dance");
+       } else if (p instanceof Musician && p.getTalent() == concSkill.get(0)) {
+           System.out.println(concSkill.get(1) + " skill is " + concSkill.get(0) + ". Please dance");
+       } else if (o instanceof Singer && o.getTalent() == concSkill.get(0)) {
+           System.out.println(concSkill.get(1) + " skill is " + concSkill.get(0) + ". Please dance");
+       } else if (r instanceof Singer && r.getTalent() == concSkill.get(0)) {
+           System.out.println(concSkill.get(1) + " skill is " + concSkill.get(0) + ". Please dance");
+       }
     }
-
 }

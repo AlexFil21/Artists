@@ -1,30 +1,25 @@
+import abstractClass.Artist;
 import java.util.ArrayList;
 import java.util.Arrays;
+
 
 public class Programm {
     private static int i = 0;
     public static ArrayList<ArrayList<String>> concSkills = new ArrayList<>(1);
 
     public static void main(String[] args) {
-        TalantedHuman e = new TalantedHuman();
-
-        if (e.TalentedPeopleOrArtist()) {
-            People people = new People();
-            people.setNameAge();
-            System.out.println("Know you created a simple person, not artist. Try one more time");
-        } else {
 //create person
             People people = new People();
             people.setNameAge();
 
 //create academy
             ArtAcademy academy = new ArtAcademy();
-
+            Artist a = academy.teach(people);
 //artist Psevdo
-            String psevdo = academy.Teach(people).getPsevdoName();
+            String psevdo = a.getPsevdoName();
 
 //set skills
-            String artistSkill = academy.setRandomSkills();
+            String artistSkill = a.getSkill();
 
 //create artist info array
             String[] arr = {people.getName(), Integer.toString(people.getAge()), psevdo};
@@ -46,15 +41,11 @@ public class Programm {
             }
 
 
-
-        i++;
-        }
-
-
 //adding artist
         String[] arrg = {};
-        while (i<3) {
+        while (i<2) {
             System.out.println();
+            i++;
             main(arrg);
         }
     }
